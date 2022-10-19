@@ -26,3 +26,9 @@
     - [playbook.tpl](templates/playbook.tpl) - шаблон плейбука для сохранения конфигурационного файла kubectl
     - [supplementary_addresses_in_ssl_keys.tpl](templates/supplementary_addresses_in_ssl_keys.tpl) - шаблон конфигурации kubespray, чтобы сделать доступным обращения по внешнему IP кластера
     - [exported-credentials.tpl](templates/exported-credentials.tpl) - шаблон XML для импорта Jenkins Credentials с реквизитами DockerHub
+    - [Jenkinsfile.tpl](templates/Jenkinsfile.tpl) - шаблон конфигурации Jenkins для окружения stage
+    - [Jenkinsfile-prod.tpl](templates/Jenkinsfile-prod.tpl) - шаблон конфигурации Jenkins для окружения prod
+    - [app-deployment.tpl](templates/app-deployment.tpl) - шаблона манифеста тестового приложения для Kubernetes
+    - [diploma-test-app-stage-config.tpl](templates/diploma-test-app-stage-config.tpl) - шаблон задания Jenkins для окружения stage
+    - [diploma-test-app-prod-config.tpl](templates/diploma-test-app-prod-config.tpl) - шаблон задания Jenkins для окружения prod
+    - [server.tpl](templates/server.tpl) - шаблон конфигурации сервера Atlantis
