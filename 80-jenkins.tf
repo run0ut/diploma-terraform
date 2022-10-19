@@ -213,7 +213,7 @@ resource "null_resource" "add_tag" {
   }
 
   depends_on = [
-    null_resource.atlantis
+    null_resource.jenkins
   ]
 
   triggers = {
