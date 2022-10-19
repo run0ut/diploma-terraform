@@ -1,0 +1,28 @@
+# diploma-terraform
+
+- [00-prepare.tf](00-prepare.tf) - скачивает git-репозиторий `Kubespray` и устанавливает необходимые пакеты Python
+- [10-network.tf](10-network.tf) - настройки сети
+- [20-compute.tf](20-compute.tf) - виртуальные машины для кластера
+- [30-inventory.tf](30-inventory.tf) - подготовка файлов инвентаризации для `Ansible` из шаблона
+- [40-k8s.tf](40-k8s.tf) - разворачивает Kubernetes и сохраняет конфигурационный файл `kubectl`
+- [50-monitoring.tf](50-monitoring.tf) - разворачивает в кластере `kube-prometheus`
+- [60-app.tf](60-app.tf) - разворачивает тестовое приложение
+- [70-atlantis.tf](70-atlantis.tf) - в воркспейсе `prod` разворачивает `Atlantis`
+- [80-jenkins.tf](80-jenkins.tf) - в воркспейсе `prod` разворачивает `Jenkins`
+- [outputs.tf](outputs.tf) - выводит IP нод и ссылки на тестовое приложение, Grafana, Jenkins и Atlantis
+- [provider.tf](provider.tf) - настройки провайдера и бекенда
+- [variables.tf](variables.tf) - переменные, требует файла `tfvars` в корне, например `.auto.tfvars`
+- [atlantis.yaml](atlantis.yaml) - конфигурация Atlantis, специфичная для репозитория
+- [server.yaml](server.yaml) - конфигурация Atlantis, общая для сервера
+- [.terraformrc](.terraformrc) - конфигурация Terraform со ссылкой на репозиторий Яндекса
+- Папка `ansible` - содержит плейбуки, сгенерированные при применении манифестов Terraform
+- Папка `kubeconfig`:
+    - [README.md](kubeconfig/README.md) - описание
+    - [config-prod](kubeconfig/config-prod) - пример конфига кластера в воркспейсе prod
+    - [config-stage](kubeconfig/config-stage) - пример конфига кластера в воркспейсе stage
+- Папка `templates`:
+    - [atlantis_statefulset.tpl](templates/atlantis_statefulset.tpl) - шаблон манифеста Atlantis
+    - [inventory.tpl](templates/inventory.tpl) - шаблон файла инфентаризации для Ansible
+    - [playbook.tpl](templates/playbook.tpl) - шаблон плейбука для сохранения конфигурационного файла kubectl
+    - [supplementary_addresses_in_ssl_keys.tpl](templates/supplementary_addresses_in_ssl_keys.tpl) - шаблон конфигурации kubespray, чтобы сделать доступным обращения по внешнему IP кластера
+    - [exported-credentials.tpl](templates/exported-credentials.tpl) - шаблон XML для импорта Jenkins Credentials с реквизитами DockerHub

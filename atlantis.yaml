@@ -1,0 +1,29 @@
+version: 3
+projects:
+- dir: .
+  # Надо запускать планирование и аплай для двух воркспейса stage.
+  workspace: stage
+  autoplan:
+    # Необходимо включить автопланирование при изменении любых файлов *.tf.
+    when_modified: ["*.tf*"]
+  workflow: custom
+- dir: .
+  # Надо запускать планирование и аплай для двух воркспейса prod.
+  workspace: prod
+  autoplan:
+    # Необходимо включить автопланирование при изменении любых файлов *.tf.
+    when_modified: ["*.tf*"]
+  workflow: custom
+workflows:
+  custom:
+    plan:
+      steps:
+      - run: ln -sf /home/atlantis/key.json key.json
+      - init
+      - run: cp -f /home/atlantis/.auto.tfvars ./
+      - plan
+    apply:
+      steps:
+      - run: cp -f /home/atlantis/.auto.tfvars ./
+      - plan
+      - apply

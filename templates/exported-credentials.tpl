@@ -1,0 +1,17 @@
+<list>
+  <com.cloudbees.plugins.credentials.domains.DomainCredentials>
+    <domain>
+      <specifications/>
+    </domain>
+    <credentials>
+      <com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
+        <scope>GLOBAL</scope>
+        <id>dockerHub</id>
+        <description></description>
+        <username>${login}</username>
+        <password>${password}</password>
+        <usernameSecret>false</usernameSecret>
+      </com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl>
+    </credentials>
+  </com.cloudbees.plugins.credentials.domains.DomainCredentials>
+</list>
